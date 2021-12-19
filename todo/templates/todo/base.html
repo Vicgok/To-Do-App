@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        html {
+            height: 100%;
+            background: rgb(47, 47, 47);
+            background: linear-gradient(90deg, rgba(37, 37, 37, 1) 0%, rgba(0, 0, 0, 1) 100%);
+
+        }
+
+        body {
+
+            color: rgba(255, 255, 255, 0.9);
+            font-family: 'Nunito', sans-serif;
+            padding-top: 5%;
+            padding-left: 5%;
+            padding-right: 5%;
+            font-weight: 500;
+
+        }
+
+        h1,
+        h2,
+        hr {
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            /* font-weight: bold; */
+        }
+
+        p {
+            margin-bottom: 1px;
+        }
+
+
+
+        label {
+            display: block;
+        }
+
+        .button {
+            border: 1px solid white;
+            background-color: transparent;
+            color: white;
+            padding: 6px 18px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #fff;
+            color: black;
+            transition-duration: 0.5s;
+        }
+
+        .button.yes {
+            color: #C40233;
+            transition-duration: 0.5s;
+        }
+
+        .button.yes:hover {
+            background-color: #C40233;
+            color: #fff;
+            transition-duration: 0.5s;
+        }
+
+        .button.no {
+            color: #48A14D;
+            transition-duration: 0.5s;
+        }
+
+        .button.no:hover {
+            background-color: #48A14D;
+            color: #fff;
+            transition-duration: 0.5s;
+        }
+
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+            transition: background-color 500s ease-in-out 0s;
+            -webkit-text-fill-color: #fff !important;
+        }
+
+        input[type=text],
+        input[type=password],
+        input[type=email],
+        label {
+            outline: 0;
+            width: 100%;
+            border-width: 0 0 2px;
+            margin-bottom: 10px;
+            background: transparent;
+            background-color: transparent;
+            color: rgba(255, 255, 255, 0.9);
+            font-family: 'Nunito', sans-serif;
+
+        }
+
+
+        textarea {
+            outline: 0px;
+            width: 100%;
+            border-width: 2px 2px 2px;
+            margin-bottom: 10px;
+            background: transparent;
+            background-color: transparent;
+            color: rgba(255, 255, 255, 0.9);
+            font-family: 'Nunito', sans-serif;
+        }
+
+
+        input[type="checkbox"] {
+            position: relative;
+            width: 30px;
+            height: 15px;
+            vertical-align: middle;
+            -webkit-appearance: none;
+            background: #C40233;
+            outline: none;
+            border-radius: 10px;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.438);
+            transition: .5s;
+        }
+
+        input:checked[type="checkbox"] {
+            background: #48A14D;
+        }
+
+        input[type="checkbox"]::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 20px;
+            top: 0;
+            left: 0;
+            background: #fff;
+            transition: .5s;
+        }
+
+        input:checked[type="checkbox"]::before {
+            left: 15px;
+        }
+
+        .fa {
+            font-size: 18px;
+
+        }
+
+        .fa.fa-edit {
+            color: #FED000;
+        }
+
+        .fa.fa-trash-o {
+            color: #C40233;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+
+        }
+
+        .card-container {
+            width: 550px;
+            height: fit-content;
+            max-width: 550px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 25px;
+            background-color: rgba(192, 192, 192, 0.04);
+            box-shadow: 2px 0px 6px 5px rgba(22, 22, 22, 0.73);
+            -webkit-box-shadow: 2px 0px 6px 5px rgba(22, 22, 22, 0.73);
+            -moz-box-shadow: 2px 0px 6px 5px rgba(22, 22, 22, 0.73);
+
+        }
+
+        .card-container .card-title {
+            text-align: center;
+        }
+
+        .card-title p {
+            margin: 0;
+        }
+
+        .card-header h2 {
+            margin-top: 25px;
+        }
+
+        .card-footer {
+            display: flex;
+            flex-direction: column;
+        }
+
+
+
+
+        /* .card-title.listView {
+            display: grid;
+            grid-template-columns: max-content max-content;
+            text-align: end;
+        } */
+
+        .card-title.listView {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card-title.user-title {
+            text-align: start;
+        }
+
+        .card-title.user-actions {
+            display: flex;
+            flex-direction: column;
+            text-align: end;
+        }
+
+        .card-header.listView {
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .card-body.listView {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .task-container-header {
+            margin-top: 45px;
+        }
+
+        .task-container-body {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #fff;
+        }
+
+        .task-search {
+            display: block;
+            margin-top: 25px;
+
+        }
+
+        /* .task-search form {
+            display: flex;
+        } */
+
+        .task-search form input[type='text'] {
+            margin-bottom: 10px;
+            margin-right: 50px;
+        }
+
+        .task-search form a {
+            margin-left: 5px;
+        }
+
+        .task-element.task-title.incomplete a {
+            color: #48A14D !important;
+        }
+
+        .task-modificators {
+            display: flex;
+
+        }
+
+        .task-update-icon {
+            margin-right: 20px;
+        }
+
+        .account-listView {
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .account-field-label {
+            /* margin-top: 25px; */
+            margin-bottom: 3px;
+        }
+
+        .account-field-data {
+            margin-top: 0%;
+            font-weight: bold;
+        }
+
+        .errorlist {
+            margin: 0%;
+            padding: 0%;
+            padding-left: 10px;
+            font-size: smaller;
+            font-weight: 200;
+            list-style-type: none;
+            color: #E27429;
+        }
+
+        .password-requirements {
+            margin: 0%;
+            padding: 0%;
+            padding-left: 10px;
+            opacity: .9;
+            font-size: smaller;
+            font-weight: 200;
+            list-style-type: none;
+            color: #cee027;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="container">
+        {% block content %}
+
+        {% endblock content %}
+    </div>
+</body>
+
+</html>

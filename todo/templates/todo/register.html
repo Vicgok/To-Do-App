@@ -1,0 +1,45 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+<div class="card-container">
+    <div class="card-title">
+        <h1 style="color: #E27429;">To Do</h1>
+        <p>Get Things Done</p>
+
+    </div>
+    <div class="card-header">
+        <h2>Register</h2>
+    </div>
+
+    <div class="card-body">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <p>{{form.username.label}} <span class="errorlist">{{usernameError}}</span>
+                {{form.username}}
+            </p>
+
+            <p>{{form.email.label}} <span class="errorlist">{{emailError}}</span>
+                {{form.email}}
+            </p>
+
+            <p>{{form.password1.label}}
+                {{form.password1}}
+            <div class="password-requirements">
+                <li>Your password must contain at least 8 characters.</li>
+                <li>Your password can’t be entirely numeric.</li>
+            </div>
+            <!-- <ul class="password-requirements">
+                <li>Your password must contain at least 8 characters.</li>
+                <li>Your password can’t be entirely numeric.</li>
+            </ul> -->
+            </p>
+
+            <p>{{form.password2.label}} <span class="errorlist">{{passwordError}}</span>
+                {{form.password2}}
+            </p>
+            <p><input class="button" type="submit" name="register" value="Register"></p>
+        </form>
+    </div>
+    <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+</div>
+{% endblock content %}

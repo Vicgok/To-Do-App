@@ -1,0 +1,72 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+<div class="card-container">
+
+    <div class="card-title listView">
+        <div class="card-title user-title">
+            <h2>Hey {{request.user|title}}..</h2>
+        </div>
+
+        <div class="card-title user-actions">
+            <a href="{% url 'my-account' %}">My Account</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        </div>
+    </div>
+
+    <div class="card-header listView">
+        <p style="color: #E27429;"><i>You have {{count}} incomplete task{{ count|pluralize:"s" }}</i></p>
+        <p><a href="{% url 'task-create' %}" class="button">Add Task</a></p>
+    </div>
+
+    <div class="card-body listView">
+        <div class="task-search">
+            <form method="GET">
+                <input type="text" name="search-area" value="{{search_input}}" placeholder="Search task">
+                <input class="button" type="submit" value="Search">
+                {% if search_input != '' %}
+                <a href="{% url 'tasks' %}">Clear Search</a>
+                {% endif %}
+
+            </form>
+        </div>
+        <div class="task-container">
+            <div class="task-container-header">
+                <p style="font-weight: 600;">My Tasks</p>
+            </div>
+
+
+            {% for task in tasks %}
+            <div class="task-container-body">
+
+                {% if task.complete %}
+                <div class="task-element task-title incomplete">
+                    <i><s><a href=" {% url 'task-detail' task.id %}">{{task}}</a></s></i>
+                </div>
+                {% else %}
+                <div class="task-element task-title complete">
+                    <a href=" {% url 'task-detail' task.id %}">{{task}}</a>
+                </div>
+
+                {% endif %}
+
+                <div class="task-modificators">
+                    <div class="task-element task-update-icon">
+                        <a href="{% url 'task-update' task.id %}"><i class="fa fa-edit"></i></a>
+                    </div>
+
+                    <div class="task-element task-delete-icon">
+                        <a href="{% url 'task-delete' task.id %}"><i class="fa fa-trash-o"></i></a>
+                    </div>
+                </div>
+
+            </div>
+
+            {% empty %}
+            <h3>No items in list</h3>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+{% endblock content %}

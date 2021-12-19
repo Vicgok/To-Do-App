@@ -1,0 +1,4 @@
+.vscode/
+__pycache__/
+secretKey.py
+db.sqlite3

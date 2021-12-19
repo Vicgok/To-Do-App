@@ -1,0 +1,34 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+
+<div class="card-container">
+    <div class=" card-header">
+        <p>Are you sure you want to delete <span style="color: #E27429;">'{{task.title|title}}'</span> task?</p>
+        <table>
+            <tr>
+                <th><a href="{% url 'tasks' %}"><input type="submit" class="button no" style=" font-weight: 600;"
+                            value="No"></a></th>
+                <th>
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <input type="submit" class="button yes" style="font-weight: 600;" value="Yes">
+                </th>
+            </tr>
+        </table>
+    </div>
+</div>
+
+{% endblock content %}
+
+<table>
+    <tr>
+        <th><a href="{% url 'tasks' %}"><input type="submit" class="button no" style=" font-weight: 600;"
+                    value="No"></a></th>
+        <th>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input type="submit" class="button yes" style="font-weight: 600;" value="Yes">
+        </th>
+    </tr>
+</table>

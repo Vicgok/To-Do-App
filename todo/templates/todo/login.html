@@ -1,0 +1,36 @@
+{% extends 'todo/base.html' %}
+{% block content %}
+<div class="card-container">
+
+    <div class="card-title">
+        <h1 style="color: #E27429;">To Do</h1>
+        <p>Get Things Done</p>
+
+    </div>
+
+    <div class=" card-header">
+        <h2>Login <span class="errorlist"> {{loginError}} </span></h2>
+
+    </div>
+
+    <div class="card-body">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <p><label for="username">Username</label>
+                <input type="text" name="username" value="{{username}}">
+            </p>
+            <p><label for="password">Password</label>
+                <input type="password" name="password">
+            </p>
+            <p><input class="button" type="submit" value="Login" name="login"></p>
+        </form>
+    </div>
+
+    <div class="card-footer">
+        <!-- <hr>
+        <a href="{% url 'register' %}"><input class="button" type="submit" value='Create a new account'></a> -->
+        <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+    </div>
+</div>
+
+{% endblock content %}

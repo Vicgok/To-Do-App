@@ -1,0 +1,28 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+<div class="card-container">
+    <div class=" card-header">
+        <a href="{% url 'tasks' %}"><i class="fa fa-arrow-left" style="color: #E27429; margin-bottom: 5px;"></i></a>
+        <h1>My Account</h1>
+    </div>
+    <div class="card-body">
+        <div class="account-listView">
+            <p class="account-field-label">Username</p>
+            <p class="account-field-data">{{request.user}}</p>
+
+            <p class="account-field-label">Email</p>
+            <p class="account-field-data">{{request.user.email}}</p>
+
+            <p class="account-field-label">Total Task{{ total_task|pluralize:"s" }}</p>
+            <p class="account-field-data">{{total_task}}</p>
+
+            <p class="account-field-label">Task{{ tasks_completed|pluralize:"s" }} Completed</p>
+            <p class="account-field-data">{{tasks_completed}}</p>
+
+            <p class="account-field-label">Task{{ tasks_incomplete|pluralize:"s" }} Incomplete:</p>
+            <p class="account-field-data">{{tasks_incomplete}}</p>
+        </div>
+    </div>
+</div>
+{% endblock content %}

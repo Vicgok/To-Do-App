@@ -1,0 +1,14 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+<div class="card-container">
+    <div class=" card-header">
+        <a href="{% url 'tasks' %}"> <i class="fa fa-arrow-left" style="color: #E27429; margin-bottom: 5px;"></i></a>
+        <h1><span style="color: #48A14D;">{{task.title|title}}</span></h1>
+    </div>
+    <hr style="height:2px;border-width:0;color:#E27429;background-color:#E27429">
+    <div class=" card-body">
+        <p class="account-field-data" style="margin-top: 15px;">{{task.description}}</p>
+    </div>
+</div>
+{% endblock content %}

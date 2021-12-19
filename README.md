@@ -16,7 +16,7 @@ Todo list is a list of things that one wants to get done or that need to get don
 
 User will be able to
 
-- Create an account and login.
+- Register an account, login and logout.
 - Create task, delete task and update the task as completed or not completed.
 - Search for the task that was created.
 - View the account basic details.

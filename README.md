@@ -30,7 +30,7 @@ User will be able to
 
 ### Links
 
-- Live Site URL: [Live site](https://vicky-todo-list.herokuapp.com/)
+- Live Site URL: [Use Todo-List Django app](https://vicky-todo-list.herokuapp.com/)
 
 ## Author
 
